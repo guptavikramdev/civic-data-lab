@@ -20,10 +20,7 @@ const DataList = ({ data }) => {
     if (debounceText) {
       params.set("query", debounceText);
       router.push(`?${params.toString()}`);
-    } else {
-      params.delete("query");
     }
-
     if (Object.keys(filterData).length) {
       Object.entries(filterData).map(([key, value]) => {
         params.set(key, value);
@@ -34,6 +31,11 @@ const DataList = ({ data }) => {
   const handleViewChange = useCallback(() => {
     setIsListView(!isListView);
   }, [isListView]);
+  const resetQuery = () => {
+    setSearchText("");
+    setFilterData("");
+    router.push(window.location.pathname);
+  };
   return (
     <>
       <div className="mt-10 flex gap-20 max-sm:gap-4 max-sm:flex-col max-sm:justify-start justify-between">
@@ -65,6 +67,7 @@ const DataList = ({ data }) => {
           <Filter
             aggregations={data?.aggregations}
             filterQuery={(query) => setFilterData(query)}
+            resetQuery={resetQuery}
           />
         </div>
         <div className="w-9/12 max-sm:w-full space-y-4">

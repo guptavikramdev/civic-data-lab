@@ -6,7 +6,7 @@ import Accordion from "@/components/ui/Accordion";
 import Card from "@/components/ui/Card";
 import { useRouter } from "next/navigation";
 
-const Filter = ({ aggregations, filterQuery }) => {
+const Filter = ({ aggregations, filterQuery ,resetQuery}) => {
   const [filterData, setFilterData] = useState({});
   const router = useRouter();
   const handleFilterChange = (e, category) => {
@@ -38,8 +38,8 @@ const Filter = ({ aggregations, filterQuery }) => {
 
   const resetFilters = () => {
     setFilterData({});
-    filterQuery({});
-    router.push(window.location.pathname);
+    resetQuery();
+    
   };
 
   return (

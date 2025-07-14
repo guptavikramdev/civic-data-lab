@@ -1,7 +1,10 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
+
 Create .env file in root
+
+Add API_URL in .env file
 API_URL='https://api.datakeep.civicdays.in/api/search/dataset/'
 
 First, run the development server:
